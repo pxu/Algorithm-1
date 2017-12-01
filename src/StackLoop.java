@@ -8,28 +8,28 @@ public class StackLoop {
 //	 */
 //	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
-//		int[] stack=new int[4];
+//		int[] stackqueue=new int[4];
 //		int top=0;
 //		boolean isBack=false;
 //		int max=3;
 //		while(true){
 //			if(!isBack){
-//				if(stack[top]>max){
+//				if(stackqueue[top]>max){
 //					if(top==0){
 //						break;
 //					}
 //					top--;isBack=true;
 //				}else{
 //					top++;
-//					if(top==stack.length){
-//						System.out.println(Arrays.toString( stack));
+//					if(top==stackqueue.length){
+//						System.out.println(Arrays.toString( stackqueue));
 //						top--;isBack=true;
 //					}else{
-//						stack[top]=0;
+//						stackqueue[top]=0;
 //					}
 //				}
 //			}else{
-//				stack[top]++;
+//				stackqueue[top]++;
 //				isBack=false;
 //			}
 //		

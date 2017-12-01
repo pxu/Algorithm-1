@@ -1,0 +1,150 @@
+14:22:49.530 [RaddThreadPoolExecutor-thread-63] ERROR com.paypal.risk.idi.radd.adapter Fail to load data from HBase for RADD [IDI_HDP_CF_ADDR_METADATA]
+com.paypal.risk.idi.radd.adapter.RaddHBaseException: Fail to load data from HBase for RADD [IDI_HDP_CF_ADDR_METADATA]
+        at com.paypal.risk.idi.radd.adapter.HBaseRaddDataReadAdapter.loadData(HBaseRaddDataReadAdapter.java:258)
+        at com.paypal.risk.idi.radd.adapter.HBaseRaddDataReadAdapter.LoadByOneKey(HBaseRaddDataReadAdapter.java:319)
+        at com.paypal.risk.idi.roh.radd.adapter.HybridRaddDataLoader.LoadByOneKey(HybridRaddDataLoader.java:59)
+        at com.paypal.risk.idi.radd.utils.RaddDataLoader.loadRaddData(RaddDataLoader.java:107)
+        at com.paypal.risk.idi.radd.bom.RaddSimpleBo.load(RaddSimpleBo.java:271)
+        at com.paypal.risk.idi.radd.bom.RaddService.getFromDB(RaddService.java:239)
+        at com.paypal.risk.idi.radd.bom.RaddService.getRaddBo(RaddService.java:216)
+        at com.paypal.risk.idi.radd.bom.RaddService.getRaddBo(RaddService.java:80)
+        at com.paypal.risk.idi.radd.bom.IDIRaddImpl._cacheRaddData(IDIRaddImpl.java:136)
+        at com.paypal.risk.idi.radd.bom.IDIRaddImpl.cacheRaddData(IDIRaddImpl.java:92)
+        at com.paypal.risk.idi.radd.bom.RaddImpl.cacheRaddData(RaddImpl.java:112)
+        at com.paypal.risk.idi.bom.threadpool.tasks.RADDTask.callRadd(RADDTask.java:53)
+        at com.paypal.risk.idi.bom.threadpool.tasks.RADDTask.run(RADDTask.java:42)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: org.apache.hadoop.hbase.client.RetriesExhaustedException: Failed after attempts=1, exceptions:
+Thu Oct 05 14:22:49 PDT 2017, RpcRetryingCaller{globalStartTime=1507238269496, pause=1, retries=1}, java.io.IOException: Call to lvshdc5dn0025.lvs.paypal.com/10.196.228.11:60020 failed on local exception: org.apache.hadoop.hbase.ipc.CallTimeoutException: Call id=50226, waitTime=300002, operationTimeout=300000 expired.
+        at org.apache.hadoop.hbase.client.RpcRetryingCaller.callWithRetries(RpcRetryingCaller.java:147)
+        at org.apache.hadoop.hbase.client.ResultBoundedCompletionService$QueueingFuture.run(ResultBoundedCompletionService.java:65)
+        ... 3 common frames omitted
+Caused by: java.io.IOException: Call to lvshdc5dn0025.lvs.paypal.com/10.196.228.11:60020 failed on local exception: org.apache.hadoop.hbase.ipc.CallTimeoutException: Call id=50226, waitTime=300002, operationTimeout=300000 expired.
+        at org.apache.hadoop.hbase.ipc.RpcClientImpl.wrapException(RpcClientImpl.java:1261)
+        at org.apache.hadoop.hbase.ipc.RpcClientImpl.call(RpcClientImpl.java:1229)
+        at org.apache.hadoop.hbase.ipc.AbstractRpcClient.callBlockingMethod(AbstractRpcClient.java:213)
+        at org.apache.hadoop.hbase.ipc.AbstractRpcClient$BlockingRpcChannelImplementation.callBlockingMethod(AbstractRpcClient.java:287)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$BlockingStub.scan(ClientProtos.java:32651)
+        at org.apache.hadoop.hbase.client.ClientSmallScanner$SmallScannerCallable.call(ClientSmallScanner.java:201)
+        at org.apache.hadoop.hbase.client.ClientSmallScanner$SmallScannerCallable.call(ClientSmallScanner.java:180)
+        at org.apache.hadoop.hbase.client.RpcRetryingCaller.callWithoutRetries(RpcRetryingCaller.java:200)
+        at org.apache.hadoop.hbase.client.ScannerCallableWithReplicas$RetryingRPC.call(ScannerCallableWithReplicas.java:356)
+        at org.apache.hadoop.hbase.client.ScannerCallableWithReplicas$RetryingRPC.call(ScannerCallableWithReplicas.java:330)
+        at org.apache.hadoop.hbase.client.RpcRetryingCaller.callWithRetries(RpcRetryingCaller.java:126)
+        ... 4 common frames omitted
+Caused by: org.apache.hadoop.hbase.ipc.CallTimeoutException: Call id=50226, waitTime=300002, operationTimeout=300000 expired.
+        at org.apache.hadoop.hbase.ipc.Call.checkAndSetTimeout(Call.java:70)
+        at org.apache.hadoop.hbase.ipc.RpcClientImpl.call(RpcClientImpl.java:1203)
+        ... 13 common frames omitted
+
+
+nohup ./IRAS_vs_RUCS_MRT.sh -irasBuild idiriskaccessserv-212.0-38156191.i686.rpm -irasAnalytics idiriskaccessserv_analytics-212.0-38173691.i686.rpm -rucsBuild riskunifiedcomputeservService-3.45.1-rtcs.jar -irasResults /rdp/shrd04/contromagt/AET/Simulation-Output/zhahua/59d6762be109090e11c3a7de/6/mr* -rucsResults  /rdp/shrd04/contromagt/AET/Simulation-Output/zhahua/59d67eb9e109090e11c3a7e2/4/mr* -tolerance 0.05 >"irasrucs_release_bre$(date '+%Y%m%d_%H%M%S').log" &
+
+
+
+
+nohup ./IRAS_vs_RUCS_MRT.sh -irasBuild idiriskaccessserv-212.0-38156191.i686.rpm -irasAnalytics idiriskaccessserv_analytics-212.0-38173691.i686.rpm -rucsBuild riskunifiedcomputeservService-3.45.1-rtcs.jar -irasResults /rdp/shrd04/contromagt/AET/Simulation-Output/zhahua/59d6762be109090e11c3a7de/6/mr* -rucsResults  /rdp/shrd04/contromagt/AET/Simulation-Output/zhahua/59d67eb9e109090e11c3a7e2/4/mr* -vt BREAllInOneTrack -tolerance 0.05 >"irasrucs_release_bre$(date '+%Y%m%d_%H%M%S').log" &
+
+
+corr_id_=8a9b03e688544&Exception=javax.ws.rs.client.ClientException: java.net.SocketTimeoutException: SocketTimeoutException invoking https://node-risktxncomputeserv-vip.live5.slc.paypal.com:21763/v1/riskunifiedcomputeserv/execution: Read timed out
+\tat org.apache.cxf.jaxrs.client.AbstractClient.checkClientException(AbstractClient.java:583)
+\tat org.apache.cxf.jaxrs.client.AbstractClient.preProcessResult(AbstractClient.java:565)
+\tat org.apache.cxf.jaxrs.client.ClientProxyImpl.doChainedInvocation(ClientProxyImpl.java:669)
+\tat org.apache.cxf.jaxrs.client.ClientProxyImpl.invoke(ClientProxyImpl.java:222)
+\tat com.sun.proxy.$Proxy154.handleComputeRequest(Unknown Source)
+\tat sun.reflect.GeneratedMethodAccessor972.invoke(Unknown Source)
+\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+\tat java.lang.reflect.Method.invoke(Method.java:606)
+\tat com.paypal.rtdp.remotesvccaller.RestRemoteSvcCallDispatcher.callService(RestRemoteSvcCallDispatcher.java:104)
+\tat com.paypal.rtdp.remotesvccaller.RestRemoteSvcCallDispatcher.callService(RestRemoteSvcCallDispatcher.java:26)
+\tat com.paypal.rtdp.remotesvccaller.AbstractRemoteSvcCallDispatcher$ServiceCallTask.callWithRetry(AbstractRemoteSvcCallDispatcher.java:222)
+\tat com.paypal.rtdp.remotesvccaller.AbstractRemoteSvcCallDispatcher$ServiceCallTask.run(AbstractRemoteSvcCallDispatcher.java:168)
+\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+\tat java.lang.Thread.run(Thread.java:744)
+Caused by: java.net.SocketTimeoutException: SocketTimeoutException invoking https://node-risktxncomputeserv-vip.live5.slc.paypal.com:21763/v1/riskunifiedcomputeserv/execution: Read timed out
+\tat sun.reflect.GeneratedConstructorAccessor561.newInstance(Unknown Source)
+\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+\tat org.apache.cxf.transport.http.HTTPConduit$WrappedOutputStream.mapException(HTTPConduit.java:1346)
+\tat org.apache.cxf.transport.http.HTTPConduit$WrappedOutputStream.close(HTTPConduit.java:1330)
+\tat org.apache.cxf.transport.AbstractConduit.close(AbstractConduit.java:56)
+\tat org.apache.cxf.transport.http.HTTPConduit.close(HTTPConduit.java:632)
+\tat org.apache.cxf.interceptor.MessageSenderInterceptor$MessageSenderEndingInterceptor.handleMessage(MessageSenderInterceptor.java:62)
+\tat org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:272)
+\tat org.apache.cxf.jaxrs.client.AbstractClient.doRunInterceptorChain(AbstractClient.java:642)
+\tat org.apache.cxf.jaxrs.client.ClientProxyImpl.doChainedInvocation(ClientProxyImpl.java:667)
+\t... 12 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+\tat java.net.SocketInputStream.socketRead0(Native Method)
+\tat java.net.SocketInputStream.read(SocketInputStream.java:152)
+\tat java.net.SocketInputStream.read(SocketInputStream.java:122)
+\tat com.paypal.infra.ssl.jsse.InputRecord.readFully(InputRecord.java:442)
+\tat com.paypal.infra.ssl.jsse.InputRecord.read(InputRecord.java:480)
+\tat com.paypal.infra.ssl.jsse.SSLSocketImpl.readRecord(SSLSocketImpl.java:945)
+\tat com.paypal.infra.ssl.jsse.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:902)
+\tat com.paypal.infra.ssl.jsse.AppInputStream.read(AppInputStream.java:102)
+\tat java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+\tat java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+\tat java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+\tat sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:687)
+\tat sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:633)
+\tat sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1323)
+\tat java.net.HttpURLConnection.getResp
+
+dcg02risktxncomputeserv9585.dcg02.phx.paypalinc.com 
+
+
+nc -l 8080  msmaster.qa.paypal.com
+
+
+nc -l 8080  <fifo |tee in| nc msmaster.qa.paypal.com 15663|tee out >fifo
+
+
+
+-2147483648     -2      -2      -2      
+-2147483648     -2      -2      -2      
+-2147483648     -2      -2      -2      
+-2147483648     -2      -2      -2      
+-2147483648     -2      -2      3       
+-2147483648     -2      -2      3       
+-2147483648     -2      -2      3       
+-2147483648     -2      -2      3       
+
+0       0       0       0       
+0       0       2       2       
+0       0       6       6       
+0       0       8       8       
+0       0       8       8       
+0       0       8       10      
+0       0       8       12      
+0       0       8       13      
+
+
+HTTP/1.1 200 OK
+Last-Modified: Mon, 02 Oct 2017 18:00:46 GMT
+ETag: "1a94-55a94276a2305"
+Server: Apache
+Accept-Ranges: bytes
+Content-Type: application/json
+Content-Language: en-us
+Cache-Control: max-age=31
+Transfer-Encoding: chunked
+Connection: keep-alive
+Expires: Mon, 09 Oct 2017 23:55:02 GMT
+Date: Mon, 09 Oct 2017 23:54:31 GMT
+
+1
+{
+1
+"
+1
+c
+1ontext":"a"
+
+
+
+}
+
