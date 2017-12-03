@@ -3,7 +3,7 @@ package catagory.linkedlistnarray;
 /**
  * Created by zhahua on 11/24/17.
  */
-//https://leetcode.com/problems/sort-list/description/
+// @see <a href="https://leetcode.com/problems/sort-list/description/"> link </a>
 public class sort {
 
     public static class ListNode {
