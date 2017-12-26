@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by zhahua on 11/19/17.
  */
-//http://www.lintcode.com/en/problem/permutations/#
+// http://www.lintcode.com/en/problem/permutations/#
 public class Permutation {
     public List<List<Integer>> permute(int[] nums) {
         // write your code here
