@@ -9,11 +9,11 @@ public class findMedian {
         int len = A.length + B.length;
         if (len % 2 == 0) {
             return (findK(A, B, 0, 0, len / 2) + findK(A, B, 0, 0, len / 2 + 1))
-                    / 2.0;
+                    / 2.0; // 2.0 not 2
         }
         return findK(A, B, 0, 0, len / 2 + 1);
     }
-
+    //k 代表第几个数
     public int findK(int[] A, int[] B, int startA, int startB, int k) {
         if (startA == A.length) {
             return B[startB + k - 1];
@@ -31,7 +31,7 @@ public class findMedian {
                 Integer.MAX_VALUE : B[startB + k / 2 - 1];
 
         if (valueA < valueB) {
-            return findK(A, B, startA + k / 2, startB, k - k / 2);
+            return findK(A, B, startA + k / 2, startB, k - k / 2); // not k / 2
         } else {
             return findK(A, B, startA , startB + k / 2, k - k / 2);
         }
@@ -41,4 +41,6 @@ public class findMedian {
         return;
 
     }
+
+
 }

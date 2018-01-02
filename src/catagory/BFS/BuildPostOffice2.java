@@ -70,7 +70,7 @@ public class BuildPostOffice2 {
         boolean isFound = false;
         for(int y = 0; y < h; y++) {
             for(int x = 0; x < w; x++) {
-                if(countGrid[y][x] == houses.size()) {
+                if(countGrid[y][x] == houses.size()) {//有可能某些点根本没走到过
                     min = Math.min(min, distanceGrid[y][x]);
                     isFound = true;
                 }
