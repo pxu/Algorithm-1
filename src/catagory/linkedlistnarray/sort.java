@@ -4,6 +4,12 @@ package catagory.linkedlistnarray;
  * Created by zhahua on 11/24/17.
  */
 // @see <a href="https://leetcode.com/problems/sort-list/description/"> link </a>
+
+/**
+ * @see <a href="https://leetcode.com/problems/sort-list/description/"> link </a>
+ * @see <a href="URL#https://leetcode.com/problems/sort-list/description/">label</a>
+ * See {@link <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1">HTTP/1.1 documentation</a>}
+ */
 public class sort {
 
     public static class ListNode {
